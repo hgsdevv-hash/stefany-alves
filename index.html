@@ -97,6 +97,25 @@ section.posts{padding:80px 0}
 .card p{color:var(--muted);font-size:.94rem}
 .card[hidden]{display:none}
 
+.mesa{padding:0 0 88px}
+.dica{font-size:.88rem;color:var(--muted)}
+.pratos{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:28px}
+.prato{border:0;background:none;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;perspective:1000px;aspect-ratio:3/4;position:relative;transform:rotate(var(--r));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.prato:hover{transform:rotate(0) translateY(-6px)}
+.prato:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.frente,.verso{position:absolute;inset:0;backface-visibility:hidden;border-radius:4px;transition:transform .7s cubic-bezier(.3,.7,.2,1);box-shadow:0 10px 30px -14px rgba(29,26,23,.45)}
+.frente{background:var(--paper);padding:10px 10px 0;display:flex;flex-direction:column}
+.frente img{flex:1;min-height:0;width:100%;object-fit:cover;border-radius:2px}
+.frente b{font-family:var(--serif);font-weight:600;font-size:1.1rem;margin-top:10px}
+.frente small{color:var(--muted);font-size:.8rem;padding-bottom:12px}
+.verso{background:var(--ink);color:var(--paper);padding:24px 20px;transform:rotateY(180deg);display:flex;flex-direction:column}
+.verso em{font-style:normal;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#d98a6a}
+.verso strong{font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.15;margin:10px 0 12px}
+.verso p{font-size:.88rem;color:#cfc4b8;line-height:1.55}
+.verso i{font-style:normal;margin-top:auto;color:#d98a6a;letter-spacing:.15em}
+.prato.virado .frente{transform:rotateY(-180deg)}
+.prato.virado .verso{transform:rotateY(0)}
+
 .about{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0}
 .about .wrap{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center;max-width:860px}
 .about img{width:200px;height:200px;border-radius:50%;object-fit:cover}
@@ -148,7 +167,7 @@ dialog article p{margin-bottom:14px}
       </svg>
       <span>Stefany <em>Alves</em></span>
     </a>
-    <nav><a href="#posts">Diário</a><a href="#sobre">Sobre</a><a href="https://www.instagram.com/allvesxs_/" target="_blank" rel="noopener">Instagram</a></nav>
+    <nav><a href="#posts">Diário</a><a href="#restaurantes">Restaurantes</a><a href="#sobre">Sobre</a><a href="https://www.instagram.com/allvesxs_/" target="_blank" rel="noopener">Instagram</a></nav>
   </div>
 </header>
 
@@ -195,6 +214,37 @@ dialog article p{margin-bottom:14px}
     </a>
 
     <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="mesa" id="restaurantes">
+    <div class="wrap">
+      <div class="head">
+        <h2>Onde eu comi</h2>
+        <p class="dica">Toque no card para ver o que eu pedi</p>
+      </div>
+      <div class="pratos">
+        <button class="prato" style="--r:-2deg">
+          <span class="frente"><img src="img/r-waffle.jpg" alt="Waffle com frutas vermelhas" loading="lazy"><b>Viva Bakery</b><small>Café da manhã</small></span>
+          <span class="verso"><em>O pedido</em><strong>Waffle com frutas vermelhas</strong><p>Morango, mirtilo e framboesa por cima, geleia do lado e uma mesa perto da janela. Café da manhã que vale o despertador.</p><i>★★★★★</i></span>
+        </button>
+        <button class="prato" style="--r:1.5deg">
+          <span class="frente"><img src="img/r-cafe.jpg" alt="Salão de café com janelas para as árvores" loading="lazy"><b>Viva Bakery</b><small>O lugar</small></span>
+          <span class="verso"><em>O clima</em><strong>Janelão para as árvores</strong><p>Mesa de madeira, flores no vaso e luz natural o dia todo. Lugar para ir sem pressa e com alguém que você ama.</p><i>★★★★★</i></span>
+        </button>
+        <button class="prato" style="--r:-1deg">
+          <span class="frente"><img src="img/r-pizza.jpg" alt="Pizza de calabresa na mesa" loading="lazy"><b>Pizza de sábado</b><small>Jantar</small></span>
+          <span class="verso"><em>O pedido</em><strong>Pizza de calabresa</strong><p>Massa fina, bem recheada e aquecedor do lado na área externa. Noite fria resolvida.</p><i>★★★★☆</i></span>
+        </button>
+        <button class="prato" style="--r:2deg">
+          <span class="frente"><img src="img/r-gelato.jpg" alt="Duas casquinhas de gelato" loading="lazy"><b>Gelateria</b><small>Sobremesa</small></span>
+          <span class="verso"><em>O pedido</em><strong>Gelato duplo na casquinha</strong><p>Chocolate por cima de creme e de maracujá. Um para mim, outro para dividir o momento.</p><i>★★★★★</i></span>
+        </button>
+        <button class="prato" style="--r:-1.5deg">
+          <span class="frente"><img src="img/r-prato.jpg" alt="Prato montado com flor comestível" loading="lazy"><b>Almoço especial</b><small>Almoço</small></span>
+          <span class="verso"><em>O pedido</em><strong>Risoto com crocante e molho escuro</strong><p>Prato bonito de ver e melhor ainda de comer, com flor comestível e área externa cheia de plantas.</p><i>★★★★★</i></span>
+        </button>
+      </div>
+    </div>
   </section>
 
   <section class="about" id="sobre">
@@ -282,7 +332,12 @@ const h1 = document.querySelector('.hero h1');
 h1.innerHTML = h1.textContent.split(' ').map((w,i)=>`<span class="w" style="animation-delay:${.2+i*.07}s">${w}</span>`).join(' ');
 
 // revelar ao rolar
-document.querySelectorAll('.head,.featured,#grid .card,.about .wrap').forEach((el,i)=>{
+document.querySelectorAll('.prato').forEach(p=>{
+  p.setAttribute('aria-pressed','false');
+  p.onclick=()=>p.setAttribute('aria-pressed',p.classList.toggle('virado'));
+});
+
+document.querySelectorAll('.head,.featured,#grid .card,.pratos,.about .wrap').forEach((el,i)=>{
   el.classList.add('reveal');
   if(el.closest('#grid')) el.style.transitionDelay = (i%3)*.12+'s';
 });
