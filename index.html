@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stefany Alves — diário</title>
+<meta name="description" content="O diário da Stefany Alves: fé, rotina, estilo e os pequenos dias. Having Christ, we have everything.">
+<meta property="og:title" content="Stefany Alves — diário">
+<meta property="og:description" content="Fé, rotina, estilo e os pequenos dias.">
+<meta property="og:image" content="img/p1.jpg">
+<link rel="icon" href="img/perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3ede4; --paper:#faf7f2; --ink:#1d1a17; --muted:#6e655c; --line:#d9cfc2;
+  --accent:#a2482a;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-family:var(--serif);font-size:1.35rem;font-weight:600;text-decoration:none;letter-spacing:-.01em}
+nav a{font-size:.9rem;text-decoration:none;color:var(--muted);margin-left:22px}
+nav a:hover{color:var(--ink)}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;padding:64px 0 72px}
+.kicker{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.025em;margin:14px 0 22px}
+.hero p{color:var(--muted);max-width:44ch;font-size:1.05rem}
+.hero .meta{display:flex;gap:28px;margin-top:30px;font-size:.9rem}
+.hero .meta b{display:block;font-family:var(--serif);font-size:1.5rem;font-weight:600}
+.hero figure{aspect-ratio:4/5;overflow:hidden;border-radius:4px}
+.hero figure img{width:100%;height:100%;object-fit:cover}
+
+.verse{background:var(--ink);color:var(--paper);padding:72px 0;text-align:center}
+.verse q{font-family:var(--serif);font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.2;quotes:none;display:block;max-width:22ch;margin:0 auto 14px}
+.verse span{font-size:.85rem;color:#b9ada0;letter-spacing:.08em}
+
+section.posts{padding:80px 0}
+.head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:36px}
+.head h2{font-family:var(--serif);font-weight:400;font-size:2rem;letter-spacing:-.01em}
+.filters button{background:none;border:0;font:inherit;font-size:.88rem;color:var(--muted);margin-left:16px;cursor:pointer;padding:4px 0;border-bottom:1px solid transparent}
+.filters button.on{color:var(--ink);border-color:var(--ink)}
+
+.featured{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-bottom:64px;text-decoration:none}
+.featured .img{aspect-ratio:1;overflow:hidden;border-radius:4px}
+.featured img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.featured:hover img{transform:scale(1.03)}
+.featured .txt{align-self:center}
+.featured h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;margin:12px 0 16px;letter-spacing:-.015em}
+.featured p{color:var(--muted)}
+.more{display:inline-block;margin-top:20px;font-size:.9rem;font-weight:500;border-bottom:1px solid var(--accent);color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 28px}
+.card{text-decoration:none;cursor:pointer}
+.card .img{aspect-ratio:4/5;overflow:hidden;border-radius:4px;margin-bottom:16px}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.card:hover img{transform:scale(1.04)}
+.tag{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.tag time{color:var(--muted);font-weight:400;margin-left:8px;letter-spacing:.04em;text-transform:none}
+.card h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.2;margin:8px 0 6px}
+.card p{color:var(--muted);font-size:.94rem}
+.card[hidden]{display:none}
+
+.about{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0}
+.about .wrap{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center;max-width:860px}
+.about img{width:200px;height:200px;border-radius:50%;object-fit:cover}
+.about h2{font-family:var(--serif);font-weight:400;font-size:2rem;margin-bottom:12px}
+.about p{color:var(--muted);margin-bottom:12px}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;padding:12px 22px;border-radius:2px;font-size:.9rem;font-weight:500;margin-top:8px}
+.btn:hover{background:var(--accent)}
+
+footer{padding:36px 0;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* leitura */
+dialog{border:0;padding:0;max-width:720px;width:calc(100% - 32px);background:var(--paper);color:var(--ink);border-radius:4px;max-height:90vh}
+dialog::backdrop{background:rgba(29,26,23,.6)}
+dialog img{width:100%;max-height:460px;object-fit:cover}
+dialog article{padding:32px 36px 40px}
+dialog h3{font-family:var(--serif);font-weight:400;font-size:2rem;line-height:1.1;margin:10px 0 18px}
+dialog article p{margin-bottom:14px}
+.close{position:sticky;top:0;float:right;margin:12px;background:var(--paper);border:1px solid var(--line);width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:2}
+
+@media (max-width:860px){
+  .hero,.featured{grid-template-columns:1fr;gap:28px}
+  .hero{padding:40px 0 56px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .about .wrap{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .head{flex-direction:column;gap:10px}
+  .filters button{margin:0 14px 0 0}
+}
+@media (max-width:540px){
+  nav a:not(:last-child){display:none}
+  .grid{grid-template-columns:1fr}
+  dialog article{padding:24px 20px 32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Stefany Alves</a>
+    <nav><a href="#posts">Diário</a><a href="#sobre">Sobre</a><a href="https://www.instagram.com/allvesxs_/" target="_blank" rel="noopener">Instagram</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <span class="kicker">Diário pessoal</span>
+      <h1>Fé, rotina e os pequenos dias que valem a pena.</h1>
+      <p>Um cantinho para guardar o que o feed não comporta: o que tenho aprendido com Deus, os looks do dia a dia, os lugares e as pessoas que fazem a vida mais bonita.</p>
+      <div class="meta"><div><b>2 mil+</b>leitoras no Instagram</div><div><b>Toda semana</b>texto novo</div></div>
+    </div>
+    <figure><img src="img/p1.jpg" alt="Stefany Alves sorrindo numa varanda ao entardecer"></figure>
+  </div>
+
+  <div class="verse">
+    <q>Tendo Cristo, temos tudo.</q>
+    <span>— o lema deste diário</span>
+  </div>
+
+  <section class="posts wrap" id="posts">
+    <div class="head">
+      <h2>Últimos textos</h2>
+      <div class="filters">
+        <button class="on" data-f="todos">Todos</button>
+        <button data-f="Fé">Fé</button>
+        <button data-f="Estilo">Estilo</button>
+        <button data-f="Rotina">Rotina</button>
+      </div>
+    </div>
+
+    <a class="featured card" data-id="0" data-cat="Fé">
+      <div class="img"><img src="img/p4.jpg" alt="Retrato de Stefany sob a luz do fim de tarde"></div>
+      <div class="txt">
+        <span class="tag">Fé<time>27 set 2026</time></span>
+        <h3>Tendo Cristo, temos tudo: o que essa frase mudou em mim</h3>
+        <p>Demorei para entender que "tudo" não é ter tudo resolvido. É saber de quem eu sou mesmo nos dias em que nada se resolve.</p>
+        <span class="more">Ler o texto</span>
+      </div>
+    </a>
+
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="wrap">
+      <img src="img/perfil.jpg" alt="Foto de perfil da Stefany Alves">
+      <div>
+        <h2>Oi, eu sou a Stefany.</h2>
+        <p>Cristã, apaixonada por um bom fim de tarde e por roupa confortável que ainda fica bonita. Aqui escrevo sobre o que Deus tem feito na minha vida e sobre a vida que acontece entre um domingo e outro.</p>
+        <p>Se algum texto falou com você, me conta lá no Instagram.</p>
+        <a class="btn" href="https://www.instagram.com/allvesxs_/" target="_blank" rel="noopener">Seguir @allvesxs_</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Stefany Alves</span>
+    <a href="https://hgsdev.com.br" target="_blank" rel="noopener">Site por HGS Dev</a>
+  </div>
+</footer>
+
+<dialog id="leitura">
+  <button class="close" aria-label="Fechar texto">×</button>
+  <img id="l-img" alt="">
+  <article>
+    <span class="tag" id="l-tag"></span>
+    <h3 id="l-titulo"></h3>
+    <div id="l-corpo"></div>
+  </article>
+</dialog>
+
+<script>
+const posts = [
+  {img:"p4",cat:"Fé",data:"27 set 2026",titulo:"Tendo Cristo, temos tudo: o que essa frase mudou em mim",resumo:"",corpo:[
+    "Coloquei essa frase na minha bio há um tempo e, sinceramente, no começo era só uma frase bonita. Com o tempo ela virou um lembrete que eu preciso ler de novo quase todo dia.",
+    "\"Tudo\" não quer dizer que a vida está resolvida. Quer dizer que, nos dias bons e nos dias confusos, eu sei de quem eu sou. E isso muda o jeito como eu acordo, como trato as pessoas e como lido com o que não sai do meu jeito.",
+    "Se você está num desses dias confusos: Ele continua sendo suficiente. Eu também estou aprendendo isso."]},
+  {img:"p1",cat:"Rotina",data:"20 set 2026",titulo:"Fim de tarde, cidade acendendo e um tempo só meu",resumo:"Por que eu comecei a reservar a última hora do dia para desacelerar.",corpo:[
+    "Tem uma hora do dia em que a cidade muda de cor. Comecei a guardar esse momento para mim: sem celular na mão, só observando e agradecendo.",
+    "Parece pouco, mas virou o melhor hábito do meu ano."]},
+  {img:"p2",cat:"Estilo",data:"12 set 2026",titulo:"O básico que eu repito sem culpa",resumo:"Peças simples que combinam com tudo e salvam qualquer manhã corrida.",corpo:[
+    "Calça de lavagem escura, uma regata neutra e um sapato fechado. Pronto, resolve a maioria dos meus dias.",
+    "Estilo pra mim é isso: ficar confortável e parecer eu mesma."]},
+  {img:"p3",cat:"Fé",data:"03 set 2026",titulo:"Três versículos que eu deixo à vista",resumo:"Os que estão no espelho, no papel de parede e na capinha do celular.",corpo:[
+    "Gosto de deixar a Palavra onde meus olhos passam sem eu perceber. Filipenses 4:13, Salmos 46:10 e Lamentações 3:22-23 estão sempre comigo.",
+    "Qual é o seu? Me manda lá no direct."]},
+  {img:"p5",cat:"Rotina",data:"25 ago 2026",titulo:"Uma manhã de domingo do meu jeito",resumo:"Culto, almoço em família e a tarde sem pressa.",corpo:[
+    "Domingo é o dia que eu protejo. Culto pela manhã, almoço com quem eu amo e o resto do dia sem agenda.",
+    "Descansar também é obediência."]},
+  {img:"p6",cat:"Estilo",data:"14 ago 2026",titulo:"Cabelo longo e liso: o que realmente funciona",resumo:"Minha rotina simples, sem mil produtos.",corpo:[
+    "Muita gente pergunta, então lá vai: lavo poucas vezes na semana, uso protetor térmico sempre e corto as pontas a cada três meses.",
+    "O resto é paciência."]},
+  {img:"p7",cat:"Fé",data:"02 ago 2026",titulo:"Quando a oração parece não ter resposta",resumo:"Um texto sobre esperar sem desistir.",corpo:[
+    "Já passei por fases em que orava e parecia falar sozinha. Hoje entendo que muitas respostas vieram como paz, não como solução.",
+    "Esperar em Deus não é ficar parada. É continuar caminhando confiando."]},
+];
+const grid = document.getElementById('grid');
+posts.slice(1).forEach((p,i)=>{
+  grid.insertAdjacentHTML('beforeend',`<a class="card" data-id="${i+1}" data-cat="${p.cat}">
+    <div class="img"><img src="img/${p.img}.jpg" alt="" loading="lazy"></div>
+    <span class="tag">${p.cat}<time>${p.data}</time></span>
+    <h3>${p.titulo}</h3><p>${p.resumo}</p></a>`);
+});
+
+const dlg = document.getElementById('leitura');
+document.querySelectorAll('.card').forEach(c=>{
+  c.tabIndex = 0;
+  const abrir = ()=>{
+    const p = posts[c.dataset.id];
+    document.getElementById('l-img').src = `img/${p.img}.jpg`;
+    document.getElementById('l-tag').innerHTML = `${p.cat}<time>${p.data}</time>`;
+    document.getElementById('l-titulo').textContent = p.titulo;
+    document.getElementById('l-corpo').innerHTML = p.corpo.map(t=>`<p>${t}</p>`).join('');
+    dlg.showModal(); dlg.scrollTop = 0;
+  };
+  c.addEventListener('click',abrir);
+  c.addEventListener('keydown',e=>{if(e.key==='Enter')abrir()});
+});
+dlg.querySelector('.close').onclick = ()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.card').forEach(c=>c.hidden = b.dataset.f!=='todos' && c.dataset.cat!==b.dataset.f);
+});
+</script>
+</body>
+</html>
