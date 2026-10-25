@@ -8,7 +8,7 @@
 <meta property="og:title" content="Stefany Alves — diário">
 <meta property="og:description" content="Fé, rotina, estilo e os pequenos dias.">
 <meta property="og:image" content="img/p1.jpg">
-<link rel="icon" href="img/perfil.jpg">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,7 +27,34 @@ a{color:inherit}
 
 header.top{border-bottom:1px solid var(--line)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{font-family:var(--serif);font-size:1.35rem;font-weight:600;text-decoration:none;letter-spacing:-.01em}
+header.top{position:sticky;top:0;z-index:10;background:rgba(243,237,228,.88);backdrop-filter:blur(8px)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.3rem;font-weight:600;text-decoration:none;letter-spacing:-.01em}
+.brand em{font-style:normal;font-weight:400;color:var(--muted)}
+.mark{width:40px;height:40px;fill:var(--ink)}
+.mark .ring{stroke-dasharray:183;stroke-dashoffset:183;animation:draw 1.4s .2s cubic-bezier(.65,0,.35,1) forwards}
+.mark .cross{stroke-dasharray:30;stroke-dashoffset:30;animation:draw .7s 1.3s ease-out forwards}
+.brand:hover .ring{animation:spin 1.2s cubic-bezier(.65,0,.35,1)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes spin{from{stroke-dashoffset:183}to{stroke-dashoffset:0}}
+
+/* entrada e scroll */
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(.5em);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .kicker,.hero p,.hero .meta{opacity:0;animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .kicker{animation-delay:.1s}.hero p{animation-delay:.7s}.hero .meta{animation-delay:.85s}
+.hero figure{clip-path:inset(100% 0 0 0);animation:open 1.3s .3s cubic-bezier(.7,0,.2,1) forwards}
+.hero figure img{transform:scale(1.15);animation:settle 1.8s .3s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes open{to{clip-path:inset(0 0 0 0)}}
+@keyframes settle{to{transform:scale(1)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+.faixa{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;white-space:nowrap}
+.faixa div{display:inline-flex;gap:40px;animation:rolar 30s linear infinite;font-family:var(--serif);font-size:1.25rem}
+.faixa span::after{content:"✝";color:var(--accent);margin-left:40px;font-size:.9rem}
+@keyframes rolar{to{transform:translateX(-50%)}}
+.verse q{opacity:.15;transition:opacity 1.2s ease}
+.verse.in q{opacity:1}
 nav a{font-size:.9rem;text-decoration:none;color:var(--muted);margin-left:22px}
 nav a:hover{color:var(--ink)}
 
@@ -103,14 +130,24 @@ dialog article p{margin-bottom:14px}
   .grid{grid-template-columns:1fr}
   dialog article{padding:24px 20px 32px}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .hero *,.hero figure,.reveal,.mark *{opacity:1!important;transform:none!important;clip-path:none!important;stroke-dashoffset:0!important}
+}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#">Stefany Alves</a>
+    <a class="brand" href="#" aria-label="Stefany Alves, início">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <circle class="ring" cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="29" y="43" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="32">S</text>
+        <path class="cross" d="M45 14v14M40 19h10" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>Stefany <em>Alves</em></span>
+    </a>
     <nav><a href="#posts">Diário</a><a href="#sobre">Sobre</a><a href="https://www.instagram.com/allvesxs_/" target="_blank" rel="noopener">Instagram</a></nav>
   </div>
 </header>
@@ -126,7 +163,12 @@ dialog article p{margin-bottom:14px}
     <figure><img src="img/p1.jpg" alt="Stefany Alves sorrindo numa varanda ao entardecer"></figure>
   </div>
 
-  <div class="verse">
+  <div class="faixa" aria-hidden="true"><div>
+    <span>Fé</span><span>Rotina</span><span>Estilo</span><span>Fins de tarde</span><span>Família</span><span>Gratidão</span>
+    <span>Fé</span><span>Rotina</span><span>Estilo</span><span>Fins de tarde</span><span>Família</span><span>Gratidão</span>
+  </div></div>
+
+  <div class="verse reveal">
     <q>Tendo Cristo, temos tudo.</q>
     <span>— o lema deste diário</span>
   </div>
@@ -234,6 +276,18 @@ document.querySelectorAll('.card').forEach(c=>{
 });
 dlg.querySelector('.close').onclick = ()=>dlg.close();
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+
+// título palavra por palavra
+const h1 = document.querySelector('.hero h1');
+h1.innerHTML = h1.textContent.split(' ').map((w,i)=>`<span class="w" style="animation-delay:${.2+i*.07}s">${w}</span>`).join(' ');
+
+// revelar ao rolar
+document.querySelectorAll('.head,.featured,#grid .card,.about .wrap').forEach((el,i)=>{
+  el.classList.add('reveal');
+  if(el.closest('#grid')) el.style.transitionDelay = (i%3)*.12+'s';
+});
+const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
