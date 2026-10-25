@@ -113,6 +113,13 @@ section.posts{padding:80px 0}
 .verso strong{font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.15;margin:10px 0 12px}
 .verso p{font-size:.88rem;color:#cfc4b8;line-height:1.55}
 .verso i{font-style:normal;margin-top:auto;color:#d98a6a;letter-spacing:.15em}
+.verso{overflow:hidden}
+@media (max-width:540px){
+  .pratos{grid-template-columns:1fr 1fr;gap:18px}
+  .verso{padding:16px 14px}
+  .verso strong{font-size:1.05rem;margin:6px 0 8px}
+  .verso p{font-size:.76rem;line-height:1.45}
+}
 .prato.virado .frente{transform:rotateY(-180deg)}
 .prato.virado .verso{transform:rotateY(0)}
 
